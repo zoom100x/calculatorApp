@@ -1,3 +1,4 @@
+
   //////////////////////////////////////////
  ///////////////THEME TOGGLE///////////////
 //////////////////////////////////////////
@@ -103,6 +104,7 @@ equal.addEventListener('click', function() {
     num2 = parseFloat(display.textContent);
     display.textContent = calculator(num1, num2, sign);
     display.textContent = display.textContent.slice(0,15);
+    num1 = parseFloat(display.textContent);
     screenRules();
 })
 del.addEventListener('click', function() {
@@ -126,8 +128,15 @@ reset.addEventListener('click', function() {
 //////////////////////////////////////////
 
 function alertmessage(msg) {
+    let time = 7000;
     messages.style.display='block';
     msg.classList.add('show');
+    setTimeout(function() {
+        msg.classList.remove('show');
+    }, time);
+    setTimeout(function() {
+        messages.style.display='none';
+    }, time+500);
     closemsg.forEach(function(e) {
         e.addEventListener('click', function() {
             msg.classList.remove('show');
@@ -136,12 +145,7 @@ function alertmessage(msg) {
             }, 500);
         })
     })
-    setTimeout(function() {
-        msg.classList.remove('show');
-    }, 7000);
-    setTimeout(function() {
-        messages.style.display='none';
-    }, 7500);
+    
 }
 
 function screenRules() {
